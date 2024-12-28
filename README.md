@@ -8,7 +8,7 @@
 
 - **Tracks Recently Opened Files**: Keeps a history of files and projects opened in Sublime Text.
 - **Customizable Settings**: Configure the maximum number of tracked files and the location of the JSON history file.
-- **Integration with LaunchBar**: The JSON file is compatible with the [Get-Recent-ST-Files-For-LaunchBar](https://github.com/alberti42/Get-Recent-ST-Files-For-LaunchBar) action, allowing you to quickly access your Sublime Text files from LaunchBar.
+- **Integration with LaunchBar**: The JSON file is compatible with the [Get Recent Sublime Text Files For LaunchBar](https://github.com/alberti42/Get-Recent-ST-Files-For-LaunchBar) action, allowing you to quickly access your Sublime Text files from LaunchBar.
 
 ---
 
