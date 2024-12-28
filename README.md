@@ -1,6 +1,6 @@
 # Recent Files Tracker for Sublime Text
 
-**Recent Files Tracker** is a Sublime Text plugin that tracks recently opened files and projects. It stores the file paths in a JSON file, making it easy to integrate with other tools, such as the [Get-Recent-ST-Files-For-LaunchBar](https://github.com/alberti42/Get-Recent-ST-Files-For-LaunchBar) action.
+**Recent Files Tracker** is a Sublime Text plugin that tracks recently opened files and projects. It stores the file paths in a JSON file, making it easy to integrate with other tools, such as the [Get Recent Sublime Text Files For LaunchBar](https://github.com/alberti42/Get-Recent-ST-Files-For-LaunchBar) action.
 
 ---
 
