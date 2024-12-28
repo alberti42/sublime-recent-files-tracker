@@ -1,0 +1,9 @@
+{
+    "name": "Recent Files Tracker",
+    "sublime_text": "*",
+    "version": "1.0.0",
+    "platforms": ["*"],
+    "dependencies": [],
+    "description": "Keep track of recently opened files",
+    "author": "Andrea Alberti"
+}
