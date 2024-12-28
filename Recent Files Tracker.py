@@ -48,18 +48,17 @@ class RecentFilesTracker(sublime_plugin.EventListener):
         # Load settings
         settings = sublime.load_settings('Recent Files Tracker.sublime-settings')
 
-        # Load path of history file
-        history_path=settings['recent_files_location']
-        if not isinstance(history_path,str):
-            logger.error(f"Error: setting 'history_path' must be a string.")
+        # Load path of history file (relying on defaults from the settings file)
+        history_path = settings.get('recent_files_location')
+        if not isinstance(history_path, str):
+            logger.error("Error: 'recent_files_location' must be a string in the settings file.")
             return
         history_path = os.path.expanduser(history_path)
-
-        # Load max number of items
-        max_num = settings['max_num_recent_files']    
-        if not isinstance(max_num, int) or max_num<=0:
-            # raise ValueError("max_num must be an integer.")
-            logger.error(f"Error: setting 'max_num' must be a positive integer.")
+        
+        # Load max number of items (relying on defaults from the settings file)
+        max_num = settings.get('max_num_recent_files')
+        if not isinstance(max_num, int) or max_num <= 0:
+            logger.error("Error: 'max_num_recent_files' must be a positive integer in the settings file.")
             return
 
         try:
