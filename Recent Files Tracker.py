@@ -16,8 +16,8 @@ logger = logging.getLogger("RecentFilesTracker")
 
 class RecentFilesTracker(sublime_plugin.EventListener):
     
-    def on_activated(self, view):
-        pass
+    # def on_activated(self, view:sublime.View):
+    #     pass
 
     def on_load_project_async(self, window:sublime.Window):
         # Retrieve the project file path
