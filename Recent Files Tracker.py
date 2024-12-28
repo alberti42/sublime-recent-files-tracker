@@ -19,6 +19,12 @@ class RecentFilesTracker(sublime_plugin.EventListener):
     # def on_activated(self, view:sublime.View):
     #     pass
 
+    def on_post_save_project(self, window:sublime.Window):
+        self.on_load_project_async(window)
+
+    def on_post_save_async(self, view:sublime.View):
+        self.on_load_async(view)
+
     def on_load_project_async(self, window:sublime.Window):
         # Retrieve the project file path
         project_file = window.project_file_name()
@@ -48,20 +54,26 @@ class RecentFilesTracker(sublime_plugin.EventListener):
             logger.error(f"Error: setting 'history_path' must be a string.")
             return
         history_path = os.path.expanduser(history_path)
-        
+
         # Load max number of items
         max_num = settings['max_num_recent_files']    
         if not isinstance(max_num, int) or max_num<=0:
             # raise ValueError("max_num must be an integer.")
             logger.error(f"Error: setting 'max_num' must be a positive integer.")
             return
-        
+
         try:
             with open(history_path, 'r') as json_file:
                 history = json.load(json_file)
-        except:
-            logger.error(f"Error: could not parse JSON file: {history_path}")
-            return 
+        except FileNotFoundError:
+            logger.warning(f"History file not found. Initializing a new history: {history_path}")
+            history = []  # Initialize empty history for missing file
+        except json.JSONDecodeError:
+            logger.error(f"Error: JSON decoding failed. Corrupt file at: {history_path}")
+            return
+        except Exception as e:
+            logger.error(f"Unexpected error while reading history file: {history_path} - {e}")
+            return
         
         md5 = hashlib.md5(file_name.encode('utf_8')).hexdigest()
 
