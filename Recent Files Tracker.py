@@ -13,6 +13,25 @@ tmpdir = os.path.realpath(tempfile.gettempdir())
 
 # Logger
 logger = logging.getLogger("RecentFilesTracker")
+# We set a fixed log level; can be improved by allowing
+# the user to choose the log level
+logger.setLevel(logging.WARN)
+
+# Check if the logger already has handlers to avoid adding duplicates
+if not logger.handlers:
+    # Create a StreamHandler (outputs to console)
+    console_handler = logging.StreamHandler()
+    
+    # Set the handler's level to 0 to accept all messages
+    # We leave to `logger` the control of what has to be to logged
+    console_handler.setLevel(0) 
+
+    # Create a simple log format
+    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+    console_handler.setFormatter(formatter)
+
+    # Add the handler to the logger
+    logger.addHandler(console_handler)
 
 class RecentFilesTracker(sublime_plugin.EventListener):
     
